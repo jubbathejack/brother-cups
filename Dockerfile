@@ -2,6 +2,8 @@ FROM ubuntu:focal
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+ENV ADMIN_PASSWORD=admin
+
 COPY linux-brprinter-installer-2.2.2-2 /root/linux-brprinter-installer-2.2.2-2
 
 RUN apt update && apt upgrade -y && apt install -y cups wget
@@ -26,6 +28,6 @@ RUN printf 'y\ny\ny\nn\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.2-
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 
-CMD [ "bash"]
+CMD [ "cupsd", "-f" ]
 
 VOLUME [ "/etc/cups" ]
