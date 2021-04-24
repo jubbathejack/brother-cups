@@ -26,8 +26,10 @@ RUN cp -rp /etc/cups /etc/cups-skel
 RUN printf 'y\ny\ny\nn\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.2-2 MFC-J5910DW
 
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-ENTRYPOINT [ "docker-entrypoint.sh" ]
+ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 
 CMD [ "cupsd", "-f" ]
 
 VOLUME [ "/etc/cups" ]
+
+EXPOSE 631
