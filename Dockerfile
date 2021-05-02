@@ -24,7 +24,7 @@ RUN /usr/sbin/cupsd \
 
 RUN cp -rp /etc/cups /etc/cups-skel
 
-RUN printf 'y\ny\ny\nn\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.2-2 MFC-J5910DW
+RUN printf 'y\ny\ny\ny\nn\nn\nn\n' | bash /root/linux-brprinter-installer-2.2.2-2 MFC-J5910DW
 
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
